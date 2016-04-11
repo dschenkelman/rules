@@ -1,7 +1,25 @@
 ---
 gallery: true
+image: https://cldup.com/FvmMZUtEaF.png
 categories:
 - multifactor
+fields:
+  - value: DUO_MFA:CLIENT_ID
+    description: The client_id of the Auth0 client for which you want to require MFA.
+    type: auth0:client
+    mandatory: true
+  - value: DUO_MFA:DUO_IKEY
+    description: Your DUO ikey. Get if from here.
+    type: string
+    mandatory: true
+  - value: DUO_MFA:DUO_SKEY
+    description: Your DUO skey. Get if from here.
+    type: string
+    mandatory: true
+  - value: DUO_MFA:DUO_API_HOSTNAME
+    description: Your DUO API hostname (e.g. api-XXXXXXXX.duosecurity.com)
+    type: string
+    mandatory: true
 ---
 
 ## Multifactor with Duo Security
@@ -15,7 +33,7 @@ You need to create two __integrations__ in __Duo Security__: one of type __WebSD
 ```js
 function (user, context, callback) {
 
-  var CLIENTS_WITH_MFA = ['{REPLACE_WITH_YOUR_CLIENT_ID}'];
+  var CLIENTS_WITH_MFA = [ configuration['DUO_MFA:CLIENT_ID'] ];
   // run only for the specified clients
   if (CLIENTS_WITH_MFA.indexOf(context.clientID) !== -1) {
     // uncomment the following if clause in case you want to request a second factor only from user's that have user_metadata.use_mfa === true
@@ -23,9 +41,9 @@ function (user, context, callback) {
       context.multifactor = {
         //required
         provider: 'duo',
-        ikey: 'DIXBMN...LZO8IOS8',
-        skey: 'nZLxq8GK7....saKCOLPnh',
-        host: 'api-3....049.duosecurity.com',
+        ikey: configuration['DUO_MFA:IKEY'],
+        skey: configuration['DUO_MFA:SKEY'],
+        host: configuration['DUO_MFA:API_HOSTNAME'],
 
         // optional. Force DuoSecurity everytime this rule runs. Defaults to false. if accepted by users the cookie lasts for 30 days (this cannot be changed)
         // ignoreCookie: true,

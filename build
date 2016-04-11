@@ -3,6 +3,7 @@
 var marked = require('marked');
 var yaml = require('js-yaml');
 var async = require('async');
+var crypto = require('crypto');
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -54,11 +55,18 @@ async.map(files, function (file, callback) {
       return t.type === 'code';
     })[0].text;
 
+    var md5sum = crypto.createHash('md5');
+
+    md5sum.update(code);
+
     var result = {
       title:       title || meta.title,
       categories:  meta.categories || ['default'],
+      fields:   meta.fields,
       description: description,
       code:        code,
+      hash: md5sum.digest('hex'),
+      image: meta.image
     };
 
     callback(null, result);
