@@ -1,6 +1,7 @@
 [
   {
     "name": "access control",
+    "image": "https://cldup.com/7E2IuhwZTz.png",
     "templates": [
       {
         "title": "Allow Access during weekdays for a specific App",
@@ -141,6 +142,7 @@
   },
   {
     "name": "enrich profile",
+    "image": "https://cldup.com/iBEyyB9PMv.png",
     "templates": [
       {
         "title": "Add attributes to a user for specific connection",
@@ -317,6 +319,7 @@
   },
   {
     "name": "webhook",
+    "image": "https://cldup.com/HP0jnr2nbI.png",
     "templates": [
       {
         "title": "Custom webhook with ASPNET WebApi2",
@@ -439,6 +442,7 @@
   },
   {
     "name": "multifactor",
+    "image": "https://cldup.com/4VjYVgHly1.png",
     "templates": [
       {
         "title": "Multifactor with Duo Security",
@@ -500,6 +504,7 @@
   },
   {
     "name": "debugging",
+    "image": "https://cldup.com/KxBeP4rKDh.png",
     "templates": [
       {
         "title": "Dump rule variables to RequestBin",
@@ -514,6 +519,7 @@
   },
   {
     "name": "saml",
+    "image": "https://cldup.com/Tggylk_i09.png",
     "templates": [
       {
         "title": "Change your SAML configuration",
